@@ -13,15 +13,15 @@ class HelloController
         "Hello", "Hi", "Bye", "Cześć", "Siema", "Dzień dobry", "Witam",
     ];
 
-    #[Route('/', name: 'app_index')]
-    public function index():Response
+    #[Route('/{limit?6}', name: 'app_index')]
+    public function index(int $limit):Response
     {
-        return new Response(implode(', ', $this->messages));
+        return new Response(implode(', ', array_slice($this->messages, 0, $limit))); //shows all array
     }
 
-    #[Route('/messages/{id}', name: 'app_show_one')]
+    #[Route('/messages/{id</d+>}', name: 'app_show_one')] // </d+> is number requrement validation
     public function showOne($id)
     {
-        return new Response($this->messages[$id]);
+        return new Response($this->messages[$id]); //shows given item of the array
     }
 }
