@@ -16,10 +16,8 @@ class HelloController
     #[Route('/{limit?6}', name: 'app_index')]
     public function index(int $limit):Response
     {
-        return new Response(implode(', ', array_slice($this->messages, 0, $limit))); 
-        //shows all array
-        // impode turns array into string
-
+        return new Response(implode(', ', array_slice($this->messages, 0, $limit))); //shows all array
+        
     }
 
     #[Route('/messages/{id</d+>}', name: 'app_show_one')] // </d+> is number requrement validation
