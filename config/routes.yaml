@@ -1,6 +1,12 @@
+# config/routes.yaml
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+# the app lucky number is not important yet
+# app_lucky_number:
+#     path: lucky/number
+#     controller: App\Controller\LuckyController::number
 
 # app_index:
 #     path: /
