@@ -15,15 +15,24 @@ class HelloController extends AbstractController
     ];
 
     #[Route('/{limit?6}', name: 'app_index')]
-    public function index(int $limit):Response
+    public function index(int $limit): Response
     {
-        return new Response(implode(', ', array_slice($this->messages, 0, $limit))); //shows all array
+        return $this->render(
+            'hello/index.html.twig',
+            [
+                'message' => implode(', ', array_slice($this->messages, 0, $limit))]); //shows all array
         
     }
 
-    #[Route('/messages/{id</d+>}', name: 'app_show_one')] // </d+> is number requrement validation
-    public function showOne($id)
+    #[Route('/messages/{id<\d+>}', name: 'app_show_one')] // </d+> is number requrement validation
+    public function showOne(int $id): Response
     {
-        return new Response($this->messages[$id]); //shows given item of the array
+        return $this->render(
+            'hello/show_one.html.twig',
+            [
+                'message' => $this->messages[$id]
+            ]
+        );
+// new Response($this->messages[$id]); //shows given item of the array
     }
 }
