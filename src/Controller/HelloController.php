@@ -20,7 +20,7 @@ class HelloController extends AbstractController
         return $this->render(
             'hello/index.html.twig',
             [
-                'message' => implode(', ', array_slice($this->messages, 0, $limit))]); //shows all array
+                'messages' => array_slice($this->messages, 0, $limit)]); //shows all array
         
     }
 
@@ -30,7 +30,7 @@ class HelloController extends AbstractController
         return $this->render(
             'hello/show_one.html.twig',
             [
-                'message' => $this->messages[$id]
+                'messages' => $this->messages[$id]
             ]
         );
 // new Response($this->messages[$id]); //shows given item of the array
